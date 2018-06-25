@@ -8,4 +8,203 @@
     android:background="@color/backgroundColor"
     >
 
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/first_name_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:hintEnabled="false">
+
+        <EditText
+            android:id="@+id/first_name_edittext"
+            style="@style/MyEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/first_name"
+            android:inputType="textPersonName|textCapWords"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/last_name_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@id/first_name_layout"
+        app:hintEnabled="false">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/last_name_edittext"
+            style="@style/MyEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/last_name"
+            android:inputType="textPersonName|textCapWords"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <LinearLayout
+        android:id="@+id/height_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@id/last_name_layout">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/height_feet_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            app:hintEnabled="false"
+            android:layout_weight="1">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/height_feet_edittext"
+                style="@style/MyEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="0dp"
+                android:hint="@string/height_feet"
+                android:inputType="number"
+                android:maxLength="1"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/height_inches_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintEnabled="false"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/height_inches_edittext"
+                style="@style/MyEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:hint="@string/height_inches"
+                android:inputType="number"
+                android:maxLength="2"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/zip_code_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hintEnabled="false"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@id/height_layout">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/zip_code_edittext"
+            style="@style/MyEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/zipcode"
+            android:inputType="number"
+            android:maxLength="5"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/gender_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hintEnabled="false"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@id/zip_code_layout">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/gender_edittext"
+            style="@style/MyEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/gender"
+            android:inputType="none"
+            android:clickable="false"
+            android:longClickable="false"
+            android:drawableRight="@drawable/baseline_expand_more_black_18dp"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/dob_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hintEnabled="false"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@id/gender_layout">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/dob_edittext"
+            style="@style/MyEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/dob"
+            android:inputType="none"
+            android:clickable="false"
+            android:longClickable="false"
+            android:drawableRight="@drawable/baseline_calendar_today_black_18dp"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/race_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hintEnabled="false"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@id/dob_layout">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/race_edittext"
+            style="@style/MyEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/race"
+            android:inputType="none"
+            android:clickable="false"
+            android:longClickable="false"
+            android:drawableRight="@drawable/baseline_expand_more_black_18dp"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/religion_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hintEnabled="false"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@id/race_layout">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/religion_edittext"
+            style="@style/MyEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/religion"
+            android:inputType="none"
+            android:clickable="false"
+            android:longClickable="false"
+            android:drawableRight="@drawable/baseline_expand_more_black_18dp"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/next_btn"
+        style="@style/MySignUpButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/next"
+        android:onClick="clickNext"
+        app:layout_constraintTop_toBottomOf="@id/religion_layout"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 </android.support.constraint.ConstraintLayout>

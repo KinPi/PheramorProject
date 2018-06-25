@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="40dp">
+
+    <TextView
+        android:id="@+id/muslim_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="@string/muslim"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/christian_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        app:layout_constraintTop_toBottomOf="@id/muslim_textview"
+        android:text="@string/christian"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/jewish_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        app:layout_constraintTop_toBottomOf="@id/christian_textview"
+        android:text="@string/jewish"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/buddhist_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        app:layout_constraintTop_toBottomOf="@id/jewish_textview"
+        android:text="@string/buddhist"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/hindu_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        app:layout_constraintTop_toBottomOf="@id/buddhist_textview"
+        android:text="@string/hindu"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/atheist_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        app:layout_constraintTop_toBottomOf="@id/hindu_textview"
+        android:text="@string/atheist"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/agnostic_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        app:layout_constraintTop_toBottomOf="@id/atheist_textview"
+        android:text="@string/agnostic"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/other_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        app:layout_constraintTop_toBottomOf="@id/agnostic_textview"
+        android:text="@string/other"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/prefer_not_to_say_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        app:layout_constraintTop_toBottomOf="@id/other_textview"
+        android:text="@string/prefer_not_to_say"
+        android:textSize="18sp"/>
+
+</android.support.constraint.ConstraintLayout>

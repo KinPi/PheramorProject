@@ -27,7 +27,7 @@ public class AnimationHelper {
         return set;
     }
 
-    public static Animator moveUp (Context context, View view) {
+    public static Animator moveUp (View view) {
         int top = view.getTop();
         int bottom = view.getBottom();
         ObjectAnimator animator = ObjectAnimator.ofInt(view, "bottom", bottom, top);
@@ -35,7 +35,7 @@ public class AnimationHelper {
         return animator;
     }
 
-    public static Animator moveDown (Context context, View view) {
+    public static Animator moveDown (View view) {
         int top = view.getTop();
         int bottom = view.getBottom();
         view.setBottom(top);
