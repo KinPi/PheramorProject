@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.kin.pheramorproject.R;
+import com.kin.pheramorproject.model.User;
 import com.kin.pheramorproject.utility.AnimationHelper;
 import com.kin.pheramorproject.utility.CategoryDialogCreator;
 import com.kin.pheramorproject.utility.Validator;
@@ -24,6 +25,8 @@ public class SignUpUserInterestActivity extends AppCompatActivity {
     @BindView(R.id.interest_age_min_edittext) EditText interestAgeMinEditText;
     @BindView(R.id.interest_age_max_edittext) EditText interestAgeMaxEditText;
 
+    private User user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +35,7 @@ public class SignUpUserInterestActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         CategoryDialogCreator.setUpCategory(this, interestGenderEditText, R.layout.dialog_interest_gender);
+        user = getIntent().getParcelableExtra(User.USER_PARCEL);
     }
 
 
@@ -61,8 +65,12 @@ public class SignUpUserInterestActivity extends AppCompatActivity {
             return;
         }
 
+        user.interestGender = interestGender;
+        user.interestMinAge = minAge;
+        user.interestMaxAge = maxAge;
 
         Intent intent = new Intent(this, UploadPictureActivity.class);
+        intent.putExtra(User.USER_PARCEL, user);
         ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this);
         startActivity(intent, options.toBundle());
     }

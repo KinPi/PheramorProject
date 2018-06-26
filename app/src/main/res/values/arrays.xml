@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="interest_gender_array">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Both</item>
+    </string-array>
+
+    <string-array name="user_details">
+        <item>Height</item>
+        <item>Date Of Birth</item>
+        <item>Zip Code</item>
+        <item>Race</item>
+        <item>Religion</item>
+        <item>Preference</item>
+    </string-array>
+
+    <integer-array name="user_details_icons">
+        <item>@drawable/height</item>
+        <item>@drawable/birthday</item>
+        <item>@drawable/home</item>
+        <item>@drawable/race</item>
+        <item>@drawable/religion</item>
+        <item>@drawable/heart</item>
+    </integer-array>
+</resources>

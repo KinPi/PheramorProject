@@ -3,15 +3,18 @@ package com.kin.pheramorproject.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.kin.pheramorproject.R;
+import com.kin.pheramorproject.model.User;
 import com.kin.pheramorproject.utility.AnimationHelper;
 
 import butterknife.BindView;
@@ -20,11 +23,13 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 public class UploadPictureActivity extends AppCompatActivity {
 
+    @BindView(R.id.profile_picture_layout) RelativeLayout profilePictureLayout;
     @BindView(R.id.profile_picture) ImageView profilePictureImageView;
     @BindView(R.id.upload_profile_picture_btn) Button uploadProfilePictureButton;
 
     private static final int PICK_IMAGE = 1113;
     private boolean isPictureSelected = false;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,9 @@ public class UploadPictureActivity extends AppCompatActivity {
              .load(R.drawable.default_profile_picture)
              .bitmapTransform(new CropCircleTransformation(this))
              .into(profilePictureImageView);
+
+
+        user = getIntent().getParcelableExtra(User.USER_PARCEL);
     }
 
     @Override
@@ -49,6 +57,7 @@ public class UploadPictureActivity extends AppCompatActivity {
                     .bitmapTransform(new CropCircleTransformation(this))
                     .into(profilePictureImageView);
             isPictureSelected = true;
+            user.profilePicture = selectedImage.toString();
         }
     }
 
@@ -64,5 +73,10 @@ public class UploadPictureActivity extends AppCompatActivity {
             AnimationHelper.shake(uploadProfilePictureButton);
             return;
         }
+
+        Intent intent = new Intent(this, SummaryActivity.class);
+        intent.putExtra(User.USER_PARCEL, user);
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this);
+        startActivity(intent, options.toBundle());
     }
 }

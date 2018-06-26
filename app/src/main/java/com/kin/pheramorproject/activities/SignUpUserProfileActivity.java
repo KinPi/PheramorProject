@@ -9,6 +9,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.Slide;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kin.pheramorproject.R;
+import com.kin.pheramorproject.model.User;
 import com.kin.pheramorproject.utility.AnimationHelper;
 import com.kin.pheramorproject.utility.CategoryDialogCreator;
 import com.kin.pheramorproject.utility.Validator;
@@ -41,6 +43,7 @@ public class SignUpUserProfileActivity extends AppCompatActivity {
     @BindView(R.id.race_edittext) EditText raceEditText;
     @BindView(R.id.religion_edittext) EditText religionEditText;
 
+    private User user;
     private int month;
     private int day;
     private int year;
@@ -56,6 +59,8 @@ public class SignUpUserProfileActivity extends AppCompatActivity {
         CategoryDialogCreator.setUpCategory(this, raceEditText, R.layout.dialog_race);
         CategoryDialogCreator.setUpCategory(this, religionEditText, R.layout.dialog_religion);
         setUpDateOfBirth();
+
+        user = getIntent().getParcelableExtra(User.USER_PARCEL);
     }
 
     private void setUpDateOfBirth() {
@@ -91,65 +96,87 @@ public class SignUpUserProfileActivity extends AppCompatActivity {
     public void clickNext(View view) {
         String firstName = firstNameEditText.getText().toString();
         firstName = WordUtils.capitalizeFully(firstName);
-//        if (!Validator.validateName(firstName)) {
-//            Toast.makeText(this, getString(R.string.first_name_error_message), Toast.LENGTH_LONG).show();
-//            AnimationHelper.shake(firstNameEditText);
-//            return;
-//        }
-//
-//        String lastName = lastNameEditText.getText().toString();
-//        lastName = WordUtils.capitalize(lastName);
-//        if (!Validator.validateName(lastName)) {
-//            Toast.makeText(this, getString(R.string.last_name_error_message), Toast.LENGTH_LONG).show();
-//            AnimationHelper.shake(lastNameEditText);
-//            return;
-//        }
-//
-//        int feet, inches;
-//        try {
-//            feet = Integer.parseInt(heightFeetEditText.getText().toString());
-//            inches = Integer.parseInt(heightInchesEditText.getText().toString());
-//            if (!Validator.validateHeight(feet, inches)) {
-//                Toast.makeText(this, getString(R.string.bad_height_error_message), Toast.LENGTH_LONG).show();
-//                AnimationHelper.shake(heightFeetEditText);
-//                AnimationHelper.shake(heightInchesEditText);
-//                return;
-//            }
-//        }
-//        catch (NumberFormatException e) {
-//            Toast.makeText(this, getString(R.string.empty_height_error_message), Toast.LENGTH_LONG).show();
-//            AnimationHelper.shake(heightFeetEditText);
-//            AnimationHelper.shake(heightInchesEditText);
-//            return;
-//        }
-//
-//        String zipCode = zipCodeEditText.getText().toString();
-//        if (!Validator.validateZipCode(zipCode)) {
-//            Toast.makeText(this, getString(R.string.zip_code_error_message), Toast.LENGTH_LONG).show();
-//            AnimationHelper.shake(zipCodeEditText);
-//            return;
-//        }
-//
-//        String gender = genderEditText.getText().toString();
-//        if (gender.isEmpty()) {
-//            Toast.makeText(this, getString(R.string.empty_gender_error_message), Toast.LENGTH_LONG).show();
-//            AnimationHelper.shake(genderEditText);
-//            return;
-//        }
-//
-//        if (year == 0 || month == 0 || day == 0) {
-//            Toast.makeText(this, getString(R.string.empty_date_of_birth_error_message), Toast.LENGTH_LONG).show();
-//            AnimationHelper.shake(dobEditText);
-//            return;
-//        }
-//
-//        if (!Validator.validateDateOfBirth(year, month, day)) {
-//            Toast.makeText(this, getString(R.string.date_of_birth_error_message), Toast.LENGTH_LONG).show();
-//            AnimationHelper.shake(dobEditText);
-//            return;
-//        }
+        if (!Validator.validateName(firstName)) {
+            Toast.makeText(this, getString(R.string.first_name_error_message), Toast.LENGTH_LONG).show();
+            AnimationHelper.shake(firstNameEditText);
+            return;
+        }
+
+        String lastName = lastNameEditText.getText().toString();
+        lastName = WordUtils.capitalize(lastName);
+        if (!Validator.validateName(lastName)) {
+            Toast.makeText(this, getString(R.string.last_name_error_message), Toast.LENGTH_LONG).show();
+            AnimationHelper.shake(lastNameEditText);
+            return;
+        }
+
+        int feet, inches;
+        try {
+            feet = Integer.parseInt(heightFeetEditText.getText().toString());
+            inches = Integer.parseInt(heightInchesEditText.getText().toString());
+            if (!Validator.validateHeight(feet, inches)) {
+                Toast.makeText(this, getString(R.string.bad_height_error_message), Toast.LENGTH_LONG).show();
+                AnimationHelper.shake(heightFeetEditText);
+                AnimationHelper.shake(heightInchesEditText);
+                return;
+            }
+        }
+        catch (NumberFormatException e) {
+            Toast.makeText(this, getString(R.string.empty_height_error_message), Toast.LENGTH_LONG).show();
+            AnimationHelper.shake(heightFeetEditText);
+            AnimationHelper.shake(heightInchesEditText);
+            return;
+        }
+
+        String zipCode = zipCodeEditText.getText().toString();
+        if (!Validator.validateZipCode(zipCode)) {
+            Toast.makeText(this, getString(R.string.zip_code_error_message), Toast.LENGTH_LONG).show();
+            AnimationHelper.shake(zipCodeEditText);
+            return;
+        }
+
+        String gender = genderEditText.getText().toString();
+        if (gender.isEmpty()) {
+            Toast.makeText(this, getString(R.string.empty_gender_error_message), Toast.LENGTH_LONG).show();
+            AnimationHelper.shake(genderEditText);
+            return;
+        }
+
+        if (year == 0 || month == 0 || day == 0) {
+            Toast.makeText(this, getString(R.string.empty_date_of_birth_error_message), Toast.LENGTH_LONG).show();
+            AnimationHelper.shake(dobEditText);
+            return;
+        }
+
+        if (!Validator.validateDateOfBirth(year, month, day)) {
+            Toast.makeText(this, getString(R.string.date_of_birth_error_message), Toast.LENGTH_LONG).show();
+            AnimationHelper.shake(dobEditText);
+            return;
+        }
+
+        String race = raceEditText.getText().toString();
+        if (race.isEmpty()) {
+            race = getString(R.string.prefer_not_to_say);
+        }
+
+        String religion = religionEditText.getText().toString();
+        if (religion.isEmpty()) {
+            religion = getString(R.string.prefer_not_to_say);
+        }
+
+        user.firstName = firstName;
+        user.lastName = lastName;
+        user.heightFeet = feet;
+        user.heightInches = inches;
+        user.zipCode = zipCode;
+        user.gender = gender;
+        user.dateOfBirth = month + "/" + day + "/" + year;
+        user.race = race;
+        user.religion = religion;
+
 
         Intent intent = new Intent(this, SignUpUserInterestActivity.class);
+        intent.putExtra(User.USER_PARCEL, user);
         ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this);
         startActivity(intent, options.toBundle());
     }

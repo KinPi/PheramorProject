@@ -8,9 +8,11 @@
     tools:context=".activities.UploadPictureActivity">
 
     <RelativeLayout
+        android:id="@+id/profile_picture_layout"
         android:layout_width="260dp"
         android:layout_height="260dp"
         android:background="@drawable/circle"
+        android:transitionName="profilePicture"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
