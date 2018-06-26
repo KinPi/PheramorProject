@@ -44,9 +44,22 @@
     <string name="log_in">Log In</string>
     <string name="log_in_message">Log in is not implemented. Please use sign up!</string>
     <string name="signUp">Sign Up</string>
+    <string name="your_interests">Your Interests</string>
+    <string name="interest_age_min">Min Age</string>
+    <string name="interest_age_max">Max Age</string>
+    <string name="both">Both</string>
+    <string name="empty_interest_gender_message">Gender is empty!</string>
+    <string name="empty_interest_age_message">Please fill in the min and max ages that you are interested in!</string>
+    <string name="bad_interest_age_message">Please make sure that min age is at least 18 and min age is not greater than max age!</string>
 
     <string-array name="gender_array">
         <item>Male</item>
         <item>Female</item>
+    </string-array>
+
+    <string-array name="interest_gender_array">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Both</item>
     </string-array>
 </resources>

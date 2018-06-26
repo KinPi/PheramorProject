@@ -84,4 +84,14 @@ public class Validator {
             }
         }
     }
+
+    public static boolean validateInterestAges(int minAge, int maxAge) {
+        if (minAge > maxAge) {
+            return false;
+        }
+        else if (minAge < 18) {
+            return false;
+        }
+        return true;
+    }
 }
