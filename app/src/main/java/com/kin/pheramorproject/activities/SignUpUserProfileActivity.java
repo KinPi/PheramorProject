@@ -13,8 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kin.pheramorproject.R;
+import com.kin.pheramorproject.utility.AnimationHelper;
+import com.kin.pheramorproject.utility.Validator;
+
+import org.apache.commons.text.WordUtils;
 
 import java.util.Calendar;
 
@@ -23,10 +28,19 @@ import butterknife.ButterKnife;
 
 public class SignUpUserProfileActivity extends AppCompatActivity {
 
+    @BindView(R.id.first_name_edittext) EditText firstNameEditText;
+    @BindView(R.id.last_name_edittext) EditText lastNameEditText;
+    @BindView(R.id.height_feet_edittext) EditText heightFeetEditText;
+    @BindView(R.id.height_inches_edittext) EditText heightInchesEditText;
+    @BindView(R.id.zip_code_edittext) EditText zipCodeEditText;
     @BindView(R.id.gender_edittext) EditText genderEditText;
     @BindView(R.id.dob_edittext) EditText dobEditText;
     @BindView(R.id.race_edittext) EditText raceEditText;
     @BindView(R.id.religion_edittext) EditText religionEditText;
+
+    private int month;
+    private int day;
+    private int year;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +104,9 @@ public class SignUpUserProfileActivity extends AppCompatActivity {
         final DatePickerDialog.OnDateSetListener mDateSetListener =  (datePicker, year, month, day) -> {
             month = month + 1;
             String date = month + "/" + day + "/" + year;
+            this.day = day;
+            this.month = month;
+            this.year = year;
             dobEditText.setText(date);
         };
 
@@ -114,5 +131,64 @@ public class SignUpUserProfileActivity extends AppCompatActivity {
     }
 
     public void clickNext(View view) {
+        String firstName = firstNameEditText.getText().toString();
+        firstName = WordUtils.capitalizeFully(firstName);
+        if (!Validator.validateName(firstName)) {
+            Toast.makeText(this, getString(R.string.first_name_error_message), Toast.LENGTH_LONG).show();
+            AnimationHelper.shake(firstNameEditText);
+            return;
+        }
+
+        String lastName = lastNameEditText.getText().toString();
+        lastName = WordUtils.capitalize(lastName);
+        if (!Validator.validateName(lastName)) {
+            Toast.makeText(this, getString(R.string.last_name_error_message), Toast.LENGTH_LONG).show();
+            AnimationHelper.shake(lastNameEditText);
+            return;
+        }
+
+        int feet, inches;
+        try {
+            feet = Integer.parseInt(heightFeetEditText.getText().toString());
+            inches = Integer.parseInt(heightInchesEditText.getText().toString());
+            if (!Validator.validateHeight(feet, inches)) {
+                Toast.makeText(this, getString(R.string.bad_height_error_message), Toast.LENGTH_LONG).show();
+                AnimationHelper.shake(heightFeetEditText);
+                AnimationHelper.shake(heightInchesEditText);
+                return;
+            }
+        }
+        catch (NumberFormatException e) {
+            Toast.makeText(this, getString(R.string.empty_height_error_message), Toast.LENGTH_LONG).show();
+            AnimationHelper.shake(heightFeetEditText);
+            AnimationHelper.shake(heightInchesEditText);
+            return;
+        }
+
+        String zipCode = zipCodeEditText.getText().toString();
+        if (!Validator.validateZipCode(zipCode)) {
+            Toast.makeText(this, getString(R.string.zip_code_error_message), Toast.LENGTH_LONG).show();
+            AnimationHelper.shake(zipCodeEditText);
+            return;
+        }
+
+        String gender = genderEditText.getText().toString();
+        if (gender.isEmpty()) {
+            Toast.makeText(this, getString(R.string.empty_gender_error_message), Toast.LENGTH_LONG).show();
+            AnimationHelper.shake(genderEditText);
+            return;
+        }
+
+        if (year == 0 || month == 0 || day == 0) {
+            Toast.makeText(this, getString(R.string.empty_date_of_birth_error_message), Toast.LENGTH_LONG).show();
+            AnimationHelper.shake(dobEditText);
+            return;
+        }
+
+        if (!Validator.validateDateOfBirth(year, month, day)) {
+            Toast.makeText(this, getString(R.string.date_of_birth_error_message), Toast.LENGTH_LONG).show();
+            AnimationHelper.shake(dobEditText);
+            return;
+        }
     }
 }

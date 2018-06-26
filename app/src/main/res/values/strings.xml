@@ -33,6 +33,14 @@
     <string name="jewish">Jewish</string>
     <string name="christian">Christian</string>
     <string name="muslim">Muslim</string>
+    <string name="first_name_error_message">First name should be atleast 2 characters and consists of all letters.</string>
+    <string name="last_name_error_message">Last name should be atleast 2 characters and consists of all letters.</string>
+    <string name="bad_height_error_message">Please make sure that your feet has proper and realistic feet and inches!</string>
+    <string name="zip_code_error_message">Zip codes should have 5 digits!</string>
+    <string name="date_of_birth_error_message">You have to be 18 years or older to sign up!</string>
+    <string name="empty_height_error_message">Please fill in your height!</string>
+    <string name="empty_gender_error_message">Please select a gender!</string>
+    <string name="empty_date_of_birth_error_message">Please enter your date of birth!</string>
 
     <string-array name="gender_array">
         <item>Male</item>
