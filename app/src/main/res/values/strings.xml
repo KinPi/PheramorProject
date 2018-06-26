@@ -51,6 +51,8 @@
     <string name="empty_interest_gender_message">Gender is empty!</string>
     <string name="empty_interest_age_message">Please fill in the min and max ages that you are interested in!</string>
     <string name="bad_interest_age_message">Please make sure that min age is at least 18 and min age is not greater than max age!</string>
+    <string name="upload_profile_picture">Upload Profile Picture</string>
+    <string name="profile_picture_not_selected_message">Please select a profile picture first!</string>
 
     <string-array name="gender_array">
         <item>Male</item>

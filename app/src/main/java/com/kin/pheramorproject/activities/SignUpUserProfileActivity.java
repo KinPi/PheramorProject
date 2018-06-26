@@ -49,20 +49,13 @@ public class SignUpUserProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_user_profile);
-        setUpTransition();
+        AnimationHelper.setUpTransition(this);
         ButterKnife.bind(this);
 
         CategoryDialogCreator.setUpCategory(this, genderEditText, R.layout.dialog_gender);
         CategoryDialogCreator.setUpCategory(this, raceEditText, R.layout.dialog_race);
         CategoryDialogCreator.setUpCategory(this, religionEditText, R.layout.dialog_religion);
         setUpDateOfBirth();
-    }
-
-    private void setUpTransition () {
-        Slide slide = new Slide(Gravity.TOP);
-        slide.setDuration(700);
-        slide.excludeTarget(android.R.id.statusBarBackground, true);
-        getWindow().setEnterTransition(slide);
     }
 
     private void setUpDateOfBirth() {

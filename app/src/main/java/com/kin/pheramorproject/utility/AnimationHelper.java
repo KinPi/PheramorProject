@@ -4,7 +4,10 @@ import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.app.Activity;
 import android.content.Context;
+import android.transition.Slide;
+import android.view.Gravity;
 import android.view.View;
 
 import com.daimajia.androidanimations.library.Techniques;
@@ -42,6 +45,13 @@ public class AnimationHelper {
         ObjectAnimator animator = ObjectAnimator.ofInt(view, "bottom", top, bottom);
         animator.setDuration(500);
         return animator;
+    }
+
+    public static void setUpTransition (Activity activity) {
+        Slide slide = new Slide(Gravity.TOP);
+        slide.setDuration(700);
+        slide.excludeTarget(android.R.id.statusBarBackground, true);
+        activity.getWindow().setEnterTransition(slide);
     }
 
 }

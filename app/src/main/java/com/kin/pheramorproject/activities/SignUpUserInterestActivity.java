@@ -1,5 +1,7 @@
 package com.kin.pheramorproject.activities;
 
+import android.content.Intent;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.Slide;
@@ -26,17 +28,10 @@ public class SignUpUserInterestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_user_interest);
-        setUpTransition();
+        AnimationHelper.setUpTransition(this);
         ButterKnife.bind(this);
 
         CategoryDialogCreator.setUpCategory(this, interestGenderEditText, R.layout.dialog_interest_gender);
-    }
-
-    private void setUpTransition () {
-        Slide slide = new Slide(Gravity.TOP);
-        slide.setDuration(700);
-        slide.excludeTarget(android.R.id.statusBarBackground, true);
-        getWindow().setEnterTransition(slide);
     }
 
 
@@ -67,5 +62,8 @@ public class SignUpUserInterestActivity extends AppCompatActivity {
         }
 
 
+        Intent intent = new Intent(this, UploadPictureActivity.class);
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this);
+        startActivity(intent, options.toBundle());
     }
 }
