@@ -15,6 +15,7 @@
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
         android:scaleType="fitCenter"
+        android:transitionName="logo"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/linearlayout"
         app:layout_constraintStart_toStartOf="parent"
@@ -90,8 +91,9 @@
         style="@style/MySignUpButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sign Up"
+        android:text="@string/signUp"
         android:onClick="clickSignUp"
+        android:transitionName="signUp"
         app:layout_constraintTop_toBottomOf="@id/linearlayout"
         app:layout_constraintBottom_toBottomOf="parent"/>
 

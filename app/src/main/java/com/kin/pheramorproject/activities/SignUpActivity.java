@@ -31,12 +31,6 @@ public class SignUpActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @Override
-    public void onStart () {
-        super.onStart();
-        AnimationHelper.scaleIn(this, logo).start();
-    }
-
     public void clickSignUp(View view) {
         String email = emailEditText.getText().toString();
         boolean isEmailValid = Validator.validateEmailAddress(email);

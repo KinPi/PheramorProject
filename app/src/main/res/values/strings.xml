@@ -41,6 +41,9 @@
     <string name="empty_height_error_message">Please fill in your height!</string>
     <string name="empty_gender_error_message">Please select a gender!</string>
     <string name="empty_date_of_birth_error_message">Please enter your date of birth!</string>
+    <string name="log_in">Log In</string>
+    <string name="log_in_message">Log in is not implemented. Please use sign up!</string>
+    <string name="signUp">Sign Up</string>
 
     <string-array name="gender_array">
         <item>Male</item>
