@@ -10,6 +10,8 @@ import com.bumptech.glide.Glide;
 import com.kin.pheramorproject.R;
 import com.kin.pheramorproject.adapters.SummaryUserDetailsAdapter;
 import com.kin.pheramorproject.model.User;
+import com.kin.pheramorproject.task.UploadJSONTask;
+import com.kin.pheramorproject.task.UploadProfilePictureTask;
 import com.kin.pheramorproject.utility.AnimationHelper;
 import com.yarolegovich.discretescrollview.DSVOrientation;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
@@ -65,6 +67,7 @@ public class SummaryActivity extends AppCompatActivity {
                             .build());
 
 
-
+        new UploadJSONTask().execute(user);
+        new UploadProfilePictureTask(this).execute(user);
     }
 }
